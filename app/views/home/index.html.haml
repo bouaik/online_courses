@@ -1,4 +1,4 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-info
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
   %a.navbar-brand{:href => "#"} Navbar
   %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
@@ -27,3 +27,11 @@
 %h1 
   Hello World
   %p Find me in app/views/home/index.html.erb
+  .far.fa-address-book
+    HomePage
+= link_to root_path, class: "btn btn-success" do 
+  %i.fa.fa-flag 
+    HomePage
+= link_to root_path, class: "btn btn-danger" do 
+  %i.fab.fa-amazon
+    Amazon
