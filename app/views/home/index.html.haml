@@ -30,8 +30,11 @@
   .far.fa-address-book
     HomePage
 = link_to root_path, class: "btn btn-success" do 
-  %i.fa.fa-flag 
+  %i.fa.fa-flag
     HomePage
-= link_to root_path, class: "btn btn-danger" do 
+= link_to courses_path, class: "btn btn-danger" do 
+  %i.fa.fa-book
+    Courses
+= link_to courses_path, class: "btn btn-danger" do 
   %i.fab.fa-amazon
     Amazon
