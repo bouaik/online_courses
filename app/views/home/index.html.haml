@@ -11,6 +11,38 @@
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
 
+.card-group 
+  .card.card-body 
+    %h1
+      .fa.fa-graduation-cap
+    = Course.count 
+    Online Courses 
+    .row 
+    Explore a variety of fresh topics 
+  .card.card-body 
+    %h1
+      .fa.fa-chalkboard-teacher
+      /.fa.fa-brain
+    = Course.distinct.count(:user_id)
+    Expert instructors
+    .row 
+    Find the intructor for you
+  .card.card-body 
+    %h1
+      .fa.fa-user-graduate
+    = User.count 
+    Active learners
+    .row 
+    Join the knowledge sharing community
+  .card.card-body 
+    %h1
+      .fa.fa-infinity
+    Life time access
+    .row 
+    Learn on your schedule
+
+
+
 %hr
 %h2
   Popular Courses
