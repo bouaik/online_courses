@@ -1,14 +1,32 @@
-%h1 
-  Hello World
-  %p Find me in app/views/home/index.html.erb
-  .far.fa-address-book
-    HomePage
-= link_to root_path, class: "btn btn-success" do 
-  %i.fa.fa-flag
-    HomePage
-= link_to courses_path, class: "btn btn-danger" do 
-  %i.fa.fa-book
-    Courses
-= link_to courses_path, class: "btn btn-danger" do 
-  %i.fab.fa-amazon
-    Amazons
+.jumbotron
+  %h1.display-4 Hello, world!
+  %p.lead This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+  %hr.my-4/
+  %p It uses utility classes for typography and spacing to space content out within the larger container.
+  .form-inline.my-2.my-lg-0 
+    = form_tag(courses_path, method: :get) do 
+      .input-group 
+        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Search", class: "form-control mr-sm-2", "aria-label" => "Search"
+        %span.input-group-append
+          %button.btn.btn-primary.btn-sm{:type => "submit"}
+            %span.fa.fa-search{"aria-hidden" => "true"}
+
+%hr
+%h2
+  Popular Courses
+.card-columns 
+  - @courses.each do |course|
+    = render "courses/course", course: course
+%hr
+%h2
+  Top Rated Courses
+.card-columns 
+  - @courses.each do |course|
+    = render "courses/course", course: course
+%hr
+%h2
+  Most Recent Courses
+.card-columns 
+  - @recent_courses.each do |course|
+    = render "courses/course", course: course
+%hr
