@@ -1,7 +1,7 @@
 .card-columns
   - @users.each do |user|
     = render "user", user: user
-
+    
 = search_form_for @q do |f|
   = f.search_field :email_cont, placeholder: "Email"
   = f.search_field :sign_in_count_eq, placeholder: "Sign in count"

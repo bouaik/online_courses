@@ -2,9 +2,21 @@
   Courses 
   = @courses.count
 
-.card-columns 
-  - @courses.each do |course|
-    = render "course", course: course
+.row 
+  .col-md-2 
+    = search_form_for @q do |f|
+      = f.search_field :title_cont, placeholder: "Course title", class: "form-control"
+      = f.search_field :short_description_cont, placeholder: "short desc", class: "form-control"
+      = f.search_field :language_cont, placeholder: "language", class: "form-control"
+      = f.search_field :price_eq, placeholder: "price", class: "form-control"
+      = f.search_field :level_cont, placeholder: "level", class: "form-control"
+      = f.submit 
+    = link_to courses_path, class: "btn btn-sm btn-secondary" do 
+      .fa.fa-sync-alt
+  .col-md-10
+    .card-columns 
+      - @courses.each do |course|
+        = render "course", course: course
 
 
 
