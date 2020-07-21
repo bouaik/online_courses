@@ -18,4 +18,6 @@ class Course < ApplicationRecord
     def self.levels 
         LEVELS.map { |language| [language, language]}
     end
+    
+    include PublicActivity::Model
 end
