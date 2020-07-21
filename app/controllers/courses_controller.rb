@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
     else
       # @courses = Course.all
       @q = Course.ransack(params[:q])
-      @courses = @q.result(distinct: true)
+      @courses = @q.result.includes(:user)
     end
   end
 
