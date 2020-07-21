@@ -9,9 +9,11 @@ class UsersController < ApplicationController
     end
 
     def edit
+        authorize @user
     end
 
     def update
+        authorize @user
         if @user.update(users_params)
             redirect_to users_path, notice: "User #{@user.email} was successfully updates"
         else
