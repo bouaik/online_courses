@@ -4,16 +4,16 @@
 
 .row 
   .col-md-2 
-    = search_form_for @q do |f|
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       = f.label :title
-      = f.search_field :title_cont, placeholder: "Course title", class: "form-control form-control-sm"
+      = f.search_field :title_cont, class: "form-control form-control-sm", placeholder: "Course title"
       = f.label :short_description
       = f.search_field :short_description_cont, placeholder: "short desc", class: "form-control form-control-sm"
       = f.label :language
-      = f.select :language_cont, Course.languages, include_blank: true, class: "form-control form-control-sm"
+      = f.select :language_cont, Course.languages, class: "form-control form-control-sm", include_blank: true
       = f.label :price
       = f.search_field :price_eq, placeholder: "price", class: "form-control form-control-sm"
-      = f.label :price
+      = f.label :level
       = f.select :level_cont, Course.levels, include_blank: true, class: "form-control form-control-sm"
       = f.label :teacher
       = f.search_field :user_email_cont, placeholder: "User email", class: "form-control form-control-sm"
