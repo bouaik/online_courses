@@ -4,15 +4,16 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
-    if params[:title]
-      @courses = Course.where('title LIKE ?', "%#{params[:title]}%") #case-insensitive
-    else
-      # @courses = Course.all
+    # if params[:title]
+    #   @courses = Course.where('title LIKE ?', "%#{params[:title]}%") #case-insensitive
+    # else
+    #   # @courses = Course.all
       
-      # @q = Course.ransack(params[:q])
-      @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
-      @courses = @ransack_courses.result.includes(:user)
-    end
+    #   # @q = Course.ransack(params[:q])
+      
+    # end
+    @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
+    @courses = @ransack_courses.result.includes(:user)
   end
 
   # GET /courses/1
