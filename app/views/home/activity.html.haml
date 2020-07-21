@@ -1,0 +1,11 @@
+%h1 Activity
+
+- @activities.each do |activity|
+  .card
+    = activity.id 
+    = activity.trackable_type
+    = activity.trackable_id
+    = link_to activity.trackable.title, activity.trackable
+    = activity.key
+    = activity.parameters
+    = activity.owner.email
