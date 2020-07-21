@@ -4,12 +4,13 @@
   %hr.my-4/
   %p It uses utility classes for typography and spacing to space content out within the larger container.
   .form-inline.my-2.my-lg-0 
-    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
-      .input-group
-        = f.search_field :title_cont, class: 'form-control mr-sm-2', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
-        %span.input-group-append
-          %button.btn.btn-primary.btn-sm{:type => "submit"}
-            %span.fa.fa-search{"aria-hidden" => "true"}
+    - if current_user
+      = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+        .input-group
+          = f.search_field :title_cont, class: 'form-control mr-sm-2', style: 'float: left; width: 150px; ', placeholder: 'Find a course', :autocomplete => :off
+          %span.input-group-append
+            %button.btn.btn-primary.btn-sm{:type => "submit"}
+              %span.fa.fa-search{"aria-hidden" => "true"}
 
 .card-group 
   .card.card-body 

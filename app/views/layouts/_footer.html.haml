@@ -1,0 +1,20 @@
+%hr 
+%footer.my-4
+  .container 
+    .row 
+      .col-md-4 
+        Copyright © 
+        = Time.now.year 
+        OnlineCourses1010 Sp z o.o.
+        .row 
+        .fa.fa-envelope 
+        = mail_to "onlinecourses@mail.com"
+        .row 
+      .col-md-4 
+        Privacy policy 
+        .row 
+        Terms and conditions
+      .col-md-4 
+        About us 
+        .row 
+        = link_to "Tech here ?", new_course_path 
