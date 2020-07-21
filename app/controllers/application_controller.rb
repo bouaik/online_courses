@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
         flash[:alert] = "You are not authorized to perform this action."
         redirect_to(request.referrer || root_path)
     end
+
+    def user_activity
+        current_user.try :touch
+    end
 end
