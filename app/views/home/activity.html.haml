@@ -1,11 +1,16 @@
-%h1 Activity
+%h2.text-center 
+  Activity
+  .badge.badge-info 
+    = @activities.count
 
-- @activities.each do |activity|
-  .card
-    = activity.id 
-    = activity.trackable_type
-    = activity.trackable_id
-    = link_to activity.trackable.title, activity.trackable
-    = activity.key
-    = activity.parameters
-    = activity.owner.email
+%ul.list-group
+  - @activities.each do |activity|
+    %li.list-group-item
+      = activity.id 
+      = activity.trackable_type
+      = activity.trackable_id
+      - if activity.trackable
+        = link_to activity.trackable.title, activity.trackable
+      = activity.key
+      = activity.parameters
+      = activity.owner.email
