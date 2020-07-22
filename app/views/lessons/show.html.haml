@@ -1,3 +1,14 @@
+- content_for :title do 
+  OnlineCourses101
+  \|
+  Course
+  \/
+  = @course.title
+  \/
+  Lesson
+  \/
+  = @lesson.title
+
 = link_to 'Courses', courses_path
 \/
 = link_to @lesson.course.title, course_path(@lesson.course)
