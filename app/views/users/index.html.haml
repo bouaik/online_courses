@@ -3,9 +3,9 @@
   .badge.badge-info 
     = @users.count
 
-.card-columns
-  - @users.each do |user|
-    = render "user", user: user
+-# .card-columns
+-#   - @users.each do |user|
+-#     = render "user", user: user
     
 = search_form_for @q do |f|
   = f.search_field :email_cont, placeholder: "Email"
@@ -28,6 +28,8 @@
       %th= "last_sign_in_at".humanize
       %th= "current_sign_in_ip".humanize
       %th= "last_sign_in_ip".humanize
+      %th Confirmed ?
+      %th Role
   %tbody
     - @users.each do |user|
       %tr
@@ -39,4 +41,11 @@
         %td= user.last_sign_in_at
         %td= user.current_sign_in_ip
         %td= user.last_sign_in_ip
+        %td= user.confirmed?
+        %td
+          - user.roles.each do |role|
+            .badge.badge-info
+              = role.name
+          - if policy(user).edit?
+            = link_to "Edit roles", edit_user_path(user), class: "btn btn-sm btn-warning"
       
