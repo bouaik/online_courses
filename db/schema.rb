@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_000146) do
+ActiveRecord::Schema.define(version: 2020_07_22_000513) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -88,14 +88,8 @@ ActiveRecord::Schema.define(version: 2020_07_22_000146) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "lessons", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.integer "course_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["course_id"], name: "index_lessons_on_course_id"
-  end
+# Could not dump table "lessons" because of following StandardError
+#   Unknown type 'unig' for column 'slug'
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
