@@ -5,6 +5,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
+    email_prefix: '[PREFIX] ',
+    sender_address: %{"onlinecourses101 error" <support@onlinecourses101.com>},
+    exception_recipients: %w{bouaiklhoussaine@gmail.com}
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
