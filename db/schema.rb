@@ -88,8 +88,16 @@ ActiveRecord::Schema.define(version: 2020_07_22_000513) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-# Could not dump table "lessons" because of following StandardError
-#   Unknown type 'uniq' for column 'slug'
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+    t.index ["slug"], name: "index_lessons_on_slug", unique: true
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
