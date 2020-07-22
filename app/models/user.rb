@@ -10,6 +10,7 @@ class User < ApplicationRecord
   friendly_id :email, use: :slugged
 
   has_many :courses
+  has_many :enrollements
 
   def username
     self.email.split(/@/)[0]
@@ -34,6 +35,9 @@ class User < ApplicationRecord
     updated_at > 2.minutes.ago
   end
 
+  def to_s
+    email
+  end
   private
 
   def must_have_a_role
