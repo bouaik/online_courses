@@ -34,7 +34,7 @@
 
 # Bootstrap extra: Add nav, nav_js and combo_nav_js helpers and templates for Bootstrap pagination
 # See https://ddnexus.github.io/pagy/extras/bootstrap
-# require 'pagy/extras/bootstrap'
+require 'pagy/extras/bootstrap'
 
 # Bulma extra: Add nav, nav_js and combo_nav_js helpers and templates for Bulma pagination
 # See https://ddnexus.github.io/pagy/extras/bulma
@@ -101,8 +101,6 @@
 # See https://ddnexus.github.io/pagy/extras/trim
 # require 'pagy/extras/trim'
 
-
-
 # Pagy Variables
 # See https://ddnexus.github.io/pagy/api/pagy#variables
 # All the Pagy::VARS are set for all the Pagy instances but can be overridden
@@ -111,7 +109,7 @@
 
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
-# Pagy::VARS[:items] = 20                                   # default
+Pagy::VARS[:items] = 9                                # default
 
 
 # Other Variables
