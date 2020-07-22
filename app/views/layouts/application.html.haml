@@ -3,7 +3,8 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, inital-scale=1.0", :name => "viewport" }
-    %title Onlinecourse
+    %title 
+      = content_for?(:title) ? yield(:title) : "Online Courses 101"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
