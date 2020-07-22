@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_000513) do
   end
 
 # Could not dump table "lessons" because of following StandardError
-#   Unknown type 'unig' for column 'slug'
+#   Unknown type 'uniq' for column 'slug'
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
