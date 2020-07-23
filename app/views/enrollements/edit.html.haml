@@ -1,7 +1,15 @@
-%h1 Editing enrollement
+- content_for :title do 
+  OnlineCourses101
+  \|
+  Edit
+  = @enrollement
 
-= render 'form'
-
-= link_to 'Show', @enrollement
-\|
-= link_to 'Back', enrollements_path
+.card
+  .card-header
+    %h3
+      .fa.fa-lock-open
+      edit enrollements
+  .card-body
+    = render 'form'
+  .card-footer
+    = link_to 'Back', enrollements_path

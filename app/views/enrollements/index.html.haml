@@ -1,28 +1,40 @@
-%h1 Listing enrollements
+- content_for :title do 
+  OnlineCourses101
+  \|
+  Edit
+  All enrollements
 
-%table
-  %thead
-    %tr
-      %th Rating
-      %th Review
-      %th Course
-      %th User
-      %th Price
-      %th
-      %th
-      %th
+%h2.text-center 
+  Enrollements
+  .badge.badge-info 
+    = @enrollements.count
 
-  %tbody
-    - @enrollements.each do |enrollement|
+%br 
+
+.table-responsive
+  %table.table.table-bordered.table-striped.table-sm
+    %thead
       %tr
-        %td= enrollement.rating
-        %td= enrollement.review
-        %td= enrollement.course
-        %td= enrollement.user
-        %td= enrollement.price
-        %td= link_to 'Show', enrollement
-        %td= link_to 'Edit', edit_enrollement_path(enrollement)
-        %td= link_to 'Destroy', enrollement, method: :delete, data: { confirm: 'Are you sure?' }
+        %th Course
+        %th User
+        %th Rating
+        %th Review
+        %th Price
+        %th
+        %th
+        %th
+
+    %tbody
+      - @enrollements.each do |enrollement|
+        %tr
+          %td= enrollement.course
+          %td= enrollement.user
+          %td= enrollement.rating
+          %td= enrollement.review
+          %td= number_to_currency(enrollement.price)
+          %td= link_to 'Show', enrollement
+          %td= link_to 'Edit', edit_enrollement_path(enrollement)
+          %td= link_to 'Destroy', enrollement, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 

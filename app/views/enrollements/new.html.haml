@@ -1,5 +1,14 @@
-%h1 New enrollement
+- content_for :title do 
+  OnlineCourses101
+  \|
+  New enrollement
 
-= render 'form'
-
-= link_to 'Back', enrollements_path
+.card
+  .card-header
+    %h3
+      .fa.fa-lock-open
+      new enrollements
+  .card-body
+    = render 'form'
+  .card-footer
+    = link_to 'Back', enrollements_path
