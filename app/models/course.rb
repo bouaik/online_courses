@@ -29,7 +29,7 @@ class Course < ApplicationRecord
     end
 
     def bought(user)
-        self.enrollements.where(user_id: [user.id], course_id: [self.id].empty?)
+        self.enrollements.where(user_id: [user.id], course_id: [self.id]).empty?
     end
 
 end
