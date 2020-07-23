@@ -38,6 +38,11 @@ class User < ApplicationRecord
   def to_s
     email
   end
+
+  def buy_course(course)
+    self.enrollements.create(course: course, price: course.price)
+  end
+
   private
 
   def must_have_a_role
@@ -46,8 +51,6 @@ class User < ApplicationRecord
     end
   end
 
-  def buy_course(course)
-    self.enrollements.create(course: course, price: course.price)
-  end
+  
 
 end

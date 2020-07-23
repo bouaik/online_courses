@@ -29,10 +29,10 @@ class EnrollementsController < ApplicationController
     #   end
     # end
     if @course.price > 0
-      flash[:alert] = "You can't access pais courses yet"
+      flash[:alert] = "You can't access paid courses yet"
       redirect_to new_course_enrollement_path(@course)
     else
-      @enrollements = current_user.buy_course[@course]
+      @enrollements = current_user.buy_course(@course)
       redirect_to course_path(@course), notice: "You are Enrolled!"
     end
 
@@ -71,6 +71,6 @@ class EnrollementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def enrollement_params
-      params.require(:enrollement).permit(:rating, :review, :course_id, :user_id)
+      params.require(:enrollement).permit(:rating, :review)
     end
 end
