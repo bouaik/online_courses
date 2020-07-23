@@ -4,12 +4,14 @@
     = link_to course.title, course_path(course) 
   .card-body
     %small= simple_format(course.short_description)
-  .card-footer 
+  .card-footer
     .fa.fa-globe-africa
     = course.language
     .fa.fa-signal
     = course.level
-    = number_to_currency(course.price)
+    .text-right
+      = enrollement_button(course)
+      -# = number_to_currency(course.price)
   .card-footer 
     .fa.fa-tasks 
       = course.lessons.count

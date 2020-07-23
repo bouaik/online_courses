@@ -45,4 +45,9 @@ class User < ApplicationRecord
       errors.add(:roles, "must have at least one role")
     end
   end
+
+  def buy_course(course)
+    self.enrollements.create(course: course, price: course.price)
+  end
+
 end

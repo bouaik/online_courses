@@ -8,6 +8,7 @@
     %h3
       .fa.fa-lock-open
       new enrollements
+      = link_to @course.title, course_path(@course) 
   .card-body
     = render 'form'
   .card-footer

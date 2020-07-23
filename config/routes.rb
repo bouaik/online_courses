@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :courses do
     resources :lessons
+    resources :enrollements, only: [:new, :create]
   end
   resources :users, only: [:index, :edit, :show, :update]
   root 'home#index'
