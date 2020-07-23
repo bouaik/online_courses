@@ -4,6 +4,7 @@ class EnrollementsController < ApplicationController
 
   def index
     @enrollements = Enrollement.all
+    authorize @enrollements
   end
 
   def show
@@ -14,6 +15,7 @@ class EnrollementsController < ApplicationController
   end
 
   def edit
+    authorize @enrollement
   end
 
   def create
@@ -39,6 +41,7 @@ class EnrollementsController < ApplicationController
   end
 
   def update
+    authorize @enrollement
     respond_to do |format|
       if @enrollement.update(enrollement_params)
         format.html { redirect_to @enrollement, notice: 'Enrollement was successfully updated.' }
@@ -51,6 +54,7 @@ class EnrollementsController < ApplicationController
   end
 
   def destroy
+    authorize @enrollement
     @enrollement.destroy
     respond_to do |format|
       format.html { redirect_to enrollements_url, notice: 'Enrollement was successfully destroyed.' }
