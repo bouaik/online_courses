@@ -1,0 +1,11 @@
+.card 
+  .card-header 
+    .fa.fa-user 
+    = link_to enrollement.user.username, user_path(enrollement.user)
+    .fa.fa-clock  
+    = time_ago_in_words(enrollement.updated_at)
+    .fa.fa-graduation-cap
+    = link_to enrollement.course, course_path(enrollement.course)
+  .card-body 
+    = enrollement.rating
+    = enrollement.review

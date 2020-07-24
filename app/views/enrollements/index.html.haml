@@ -15,11 +15,28 @@
   %table.table.table-bordered.table-striped.table-sm
     %thead
       %tr
-        %th Course
-        %th User
-        %th Rating
-        %th Review
-        %th Price
+        %th ID
+        %th
+          .fa.fa-user 
+          User
+        %th 
+          .fa.fa-clock
+          Bought
+        %th
+          .fa.fa-graduation-cap 
+          Course
+        %th
+          .fa.fa-dollar-sign 
+          Price
+        %th 
+          .text-warning.far.fa-clock
+          Reviewed on
+        %th 
+          .text-warning.far.fa-star
+          Rating
+        %th 
+          .text-warning.far.fa-comment
+          Review
         %th
         %th
         %th
@@ -27,14 +44,19 @@
     %tbody
       - @enrollements.each do |enrollement|
         %tr
-          %td= enrollement.course
-          %td= enrollement.user
+          %td= enrollement.id
+          %td= link_to enrollement.user, user_path(enrollement.user)
+          %td= enrollement.created_at.strftime("%d/%b/%Y - %H:%M")
+          %td= link_to enrollement.course, course_path(enrollement.course)
+          %td= number_to_currency(enrollement.price)
+          %td
+            - if enrollement.rating.present?
+              = enrollement.updated_at.strftime("%d/%b/%Y - %H:%M")
           %td= enrollement.rating
           %td= enrollement.review
-          %td= number_to_currency(enrollement.price)
-          %td= link_to 'Show', enrollement
-          %td= link_to 'Edit', edit_enrollement_path(enrollement)
-          %td= link_to 'Destroy', enrollement, method: :delete, data: { confirm: 'Are you sure?' }
+          %td= link_to 'See review', enrollement
+          %td= link_to 'Review', edit_enrollement_path(enrollement), class: "btn btn-sm btn-success"
+          %td= link_to 'Delete enrollement', enrollement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
 
 %br
 
