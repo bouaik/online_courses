@@ -9,13 +9,15 @@
     = course.language
     .fa.fa-signal
     = course.level
-    .text-right
+    .text-center
       = enrollement_button(course)
+      .row
+        = review_button(course)
       -# = number_to_currency(course.price)
   .card-footer 
     .fa.fa-tasks 
       = course.lessons.count
-  .card-footer
+  .card-footer 
     .row 
       .col-md-6  
         .far.fa-clock
