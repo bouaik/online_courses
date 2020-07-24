@@ -7,5 +7,11 @@
     .fa.fa-graduation-cap
     = link_to enrollement.course, course_path(enrollement.course)
   .card-body 
-    = enrollement.rating
-    = enrollement.review
+    .text-warning.fa.fa-star
+    %b= enrollement.rating
+    .fa.fa-comment
+    %small= enrollement.review
+  - if current_user 
+    - if policy(enrollement).edit?
+      .card-footer 
+        = link_to "Edit Review", edit_enrollement_path(enrollement)

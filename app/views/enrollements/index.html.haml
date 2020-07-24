@@ -29,13 +29,13 @@
           .fa.fa-dollar-sign 
           Price
         %th 
-          .text-warning.far.fa-clock
+          .text-warning.fa.fa-clock
           Reviewed on
         %th 
-          .text-warning.far.fa-star
+          .text-warning.fa.fa-star
           Rating
         %th 
-          .text-warning.far.fa-comment
+          .text-warning.fa.fa-comment
           Review
         %th
         %th
@@ -55,7 +55,7 @@
           %td= enrollement.rating
           %td= enrollement.review
           %td= link_to 'See review', enrollement
-          %td= link_to 'Review', edit_enrollement_path(enrollement), class: "btn btn-sm btn-success"
+          %td= link_to 'Add Review', edit_enrollement_path(enrollement), class: "btn btn-sm btn-success"
           %td= link_to 'Delete enrollement', enrollement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
 
 %br

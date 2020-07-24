@@ -8,8 +8,10 @@
   .card-header
     %h3
       .fa.fa-lock-open
-      edit enrollements
+      Add a review
   .card-body
     = render 'form'
   .card-footer
-    = link_to 'Back', enrollements_path
+    = link_to "Show review", @enrollement
+    |/
+    = link_to 'Back to course', course_path(@enrollement.course)
