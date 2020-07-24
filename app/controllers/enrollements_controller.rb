@@ -4,6 +4,8 @@ class EnrollementsController < ApplicationController
 
   def index
     @enrollements = Enrollement.all
+    @pagy, @enrollements = pagy(@enrollements, items: 3)
+    
     authorize @enrollements
   end
 

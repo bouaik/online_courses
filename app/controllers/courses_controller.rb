@@ -16,7 +16,7 @@ class CoursesController < ApplicationController
     # @courses = @ransack_courses.result.includes(:user)
 
 
-    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user), items: 9)
 
   end
 
