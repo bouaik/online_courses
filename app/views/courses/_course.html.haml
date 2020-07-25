@@ -14,6 +14,9 @@
       .row
         = review_button(course)
       -# = number_to_currency(course.price)
+  .card-footer
+    .text-warning.fa.fa-star
+      = course.average_rating
   .card-footer 
     .fa.fa-tasks 
       = course.lessons.count
