@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :edit, :show, :update]
   root 'home#index'
-  get 'home/activity'
+  get 'activity', to: "home#activity"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
