@@ -42,10 +42,16 @@
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "studentDropdown"}
               = link_to purchased_courses_path, class: "dropdown-item" do 
                 .fa.fa-graduation-cap
-                %b Purchased courses
+                %b
+                  Purchased courses
+                  .badge.badge-danger
+                    = current_user.enrollements.count
               = link_to pending_review_courses_path, class: "dropdown-item" do 
                 .fa.fa-graduation-cap
-                %b Pending review
+                %b 
+                  Pending review
+                  .badge.badge-danger
+                    = current_user.enrollements.pending_review.count
         - if current_user.has_role?(:teacher)
           %li.nav-item.dropdown
             %a#teacherDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -56,11 +62,17 @@
                 .fa.fa-plus
                 %b New course
               = link_to created_courses_path, class: "dropdown-item" do 
-                .fa.fa-plus
-                %b My courses
+                .fa.fa-book-open
+                %b 
+                  My courses
+                  .badge.badge-danger
+                    = current_user.courses.count
               = link_to my_students_enrollements_path, class: "dropdown-item" do 
-                .fa.fa-plus
-                %b My students
+                .fa.fa-book-reader
+                %b 
+                  My students
+                  .badge.badge-danger
+                    = Enrollement.joins(:course).where(courses: {user: current_user}).count
         - if current_user.has_role?(:admin)
           %li.nav-item.dropdown
             %a#adminDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -69,10 +81,16 @@
             .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "adminDropdown"}
               = link_to users_path, class: "dropdown-item" do 
                 .fa.fa-users
-                %b Users
+                %b 
+                  Users
+                  .badge.badge-danger
+                    = User.count
               = link_to enrollements_path, class: "dropdown-item" do 
                 .fa.fa-lock-open
-                %b Enrollements
+                %b 
+                  Enrollements
+                  .badge.badge-danger
+                    = Enrollement.count
               = link_to activity_path, class: 'dropdown-item' do 
                 .fa.fa-bell 
                 %b Activity
