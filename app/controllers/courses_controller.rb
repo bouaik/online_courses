@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
     #   # @q = Course.ransack(params[:q])
       
     # end
+    @ransack_path = courses_path
     @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
     # @courses = @ransack_courses.result.includes(:user)
 
@@ -21,17 +22,24 @@ class CoursesController < ApplicationController
   end
 
   def purchased
-    @pagy, @courses = pagy(Course.joins(:enrollements).where(enrollements: {user: current_user}))
+    @ransack_path = purchased_courses_path
+    @ransack_courses = Course.joins(:enrollements).where(enrollements: {user: current_user}).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
 
   def pending_review
-    @pagy, @courses = pagy(Course.joins(:enrollements).merge(Enrollement.pending_review.where({user: current_user})))
+    @ransack_path = pending_review_courses_path
+    @ransack_courses = Course.joins(:enrollements).merge(Enrollement.pending_review.where({user: current_user})).ransack(params[:courses_search], search_key: :courses_search)
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
 
   def created
-    @pagy, @courses = pagy(Course.where({user: current_user}))
+    @ransack_path = created_courses_path 
+    @ransack_courses = Course.where({user: current_user}).ransack(params[:courses_search], search_key: :courses_search)
+
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end
   # GET /courses/1
