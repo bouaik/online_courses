@@ -40,5 +40,4 @@ class Course < ApplicationRecord
             update_column :average_rating, (0)
         end
     end
-
 end
