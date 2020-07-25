@@ -72,7 +72,7 @@ class EnrollementsController < ApplicationController
     end
 
     def set_enrollement
-      @enrollement = Enrollement.find(params[:id])
+      @enrollement = Enrollement.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
