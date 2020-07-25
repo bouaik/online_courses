@@ -20,6 +20,20 @@ class CoursesController < ApplicationController
 
   end
 
+  def purchased
+    @pagy, @courses = pagy(Course.joins(:enrollements).where(enrollements: {user: current_user}))
+    render 'index'
+  end
+
+  def pending_review
+    @pagy, @courses = pagy(Course.joins(:enrollements).merge(Enrollement.pending_review.where({user: current_user})))
+    render 'index'
+  end
+
+  def created
+    @pagy, @courses = pagy(Course.where({user: current_user}))
+    render 'index'
+  end
   # GET /courses/1
   # GET /courses/1.json
   def show
