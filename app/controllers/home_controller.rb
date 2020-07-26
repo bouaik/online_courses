@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @courses = Course.all.limit(3)
     @recent_courses = Course.all.limit(3).order(created_at: :desc)
-    @enrollements = Enrollement.reviewd.order(rating: :desc , created_at: :desc).limit(3)
+    @latest_good_review = Enrollement.reviewd.order(rating: :desc , created_at: :desc).limit(3)
 
     @top_rated_courses = Course.order(average_rating: :desc, created_at: :desc).limit(3)
     @popular_courses = Course.order(enrollements: :desc, created_at: :desc).limit(3)

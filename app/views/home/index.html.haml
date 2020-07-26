@@ -79,6 +79,6 @@
   .fa.fa-comment
   What our students have to say
 .card-columns 
-  - @enrollements.each do |enrollement|
+  - @latest_good_review.each do |enrollement|
     = render "enrollements/enrollement", enrollement: enrollement
 %hr
