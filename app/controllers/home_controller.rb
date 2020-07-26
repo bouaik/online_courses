@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   def index
     @courses = Course.all.limit(3)
     @recent_courses = Course.all.limit(3).order(created_at: :desc)
+    @enrollements = Enrollement.reviewd.order(rating: :desc , created_at: :desc).limit(3)
   end
 
   def activity

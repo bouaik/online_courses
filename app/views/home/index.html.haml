@@ -44,22 +44,41 @@
 
 
 
+
 %hr
 %h2
+  .fa.fa-user-graduate
+  Continue learning
+.card-columns 
+  - @courses.each do |course|
+    = render "courses/course", course: course
+%hr
+%h2
+  .fa.fa-chart-line
   Popular Courses
 .card-columns 
   - @courses.each do |course|
     = render "courses/course", course: course
 %hr
 %h2
+  .fa.fa-star
   Top Rated Courses
 .card-columns 
   - @courses.each do |course|
     = render "courses/course", course: course
 %hr
 %h2
+  .fa.fa-clock
   Most Recent Courses
 .card-columns 
   - @recent_courses.each do |course|
     = render "courses/course", course: course
+%hr
+%hr
+%h2
+  .fa.fa-comment
+  What our students have to say
+.card-columns 
+  - @enrollements.each do |enrollement|
+    = render "enrollements/enrollement", enrollement: enrollement
 %hr
