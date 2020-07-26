@@ -11,26 +11,21 @@
     = course.level
     .text-center
       = enrollement_button(course)
-      .row
+      .row.justify-content-center.mt-2
         = review_button(course)
       -# = number_to_currency(course.price)
   .card-footer
-    .text-warning.fa.fa-star
-      = course.average_rating
-    .text-info.fa.fa-user
-      = course.enrollements_count
-  .card-footer 
-    .fa.fa-tasks 
-      = course.lessons_count
-  .card-footer 
-    .row 
-      .col-md-6  
-        .far.fa-clock
-        = course.created_at.strftime('%d-%b-%Y')
-      .col-md-6.text-right
+    .row
+      .col-md-6
         .fa.fa-chalkboard-teacher
         = link_to course.user.username, user_path(course.user)
-
+      .col-md-6.text-right
+        .text-warning.fa.fa-star
+          = course.average_rating
+        .text-info.fa.fa-user
+          = course.enrollements_count
+        .fa.fa-tasks 
+          = course.lessons_count
   - if current_user
     - if policy(course).edit?
       .card-footer

@@ -1,8 +1,10 @@
 - content_for :title do 
   OnlineCourses101
   \|
-  All Courses
+  = action_name.humanize
+  courses
 %h2.text-center 
+  = action_name.humanize
   Courses
   .badge.badge-info 
     = @courses.count
