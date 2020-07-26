@@ -50,21 +50,21 @@
   .fa.fa-user-graduate
   Continue learning
 .card-columns 
-  - @courses.each do |course|
+  - @purchased_courses.each do |course|
     = render "courses/course", course: course
 %hr
 %h2
   .fa.fa-chart-line
   Popular Courses
 .card-columns 
-  - @courses.each do |course|
+  - @popular_courses.each do |course|
     = render "courses/course", course: course
 %hr
 %h2
   .fa.fa-star
   Top Rated Courses
 .card-columns 
-  - @courses.each do |course|
+  - @top_rated_courses.each do |course|
     = render "courses/course", course: course
 %hr
 %h2
