@@ -1,7 +1,8 @@
 class Lesson < ApplicationRecord
   validates :title, :content, :course, presence: true
 
-  belongs_to :course
+  belongs_to :course, counter_cache: true
+  # Course.find_each {|course| Course.reset_counters(course.id, :lessons)}
 
   has_rich_text :content
 

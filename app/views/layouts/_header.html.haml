@@ -45,7 +45,7 @@
                 %b
                   Purchased courses
                   .badge.badge-danger
-                    = current_user.enrollements.count
+                    = current_user.enrollements_count
               = link_to pending_review_courses_path, class: "dropdown-item" do 
                 .fa.fa-graduation-cap
                 %b 
@@ -66,7 +66,7 @@
                 %b 
                   My courses
                   .badge.badge-danger
-                    = current_user.courses.count
+                    = current_user.courses_count
               = link_to my_students_enrollements_path, class: "dropdown-item" do 
                 .fa.fa-book-reader
                 %b 
