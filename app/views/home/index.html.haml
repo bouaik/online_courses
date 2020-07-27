@@ -71,7 +71,7 @@
   .fa.fa-clock
   Most Recent Courses
 .card-columns 
-  - @recent_courses.each do |course|
+  - @latest_courses.each do |course|
     = render "courses/course", course: course
 %hr
 %hr

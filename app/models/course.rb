@@ -13,6 +13,10 @@ class Course < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
+    scope :latest_courses, -> { limit(3).order(created_at: :desc) }
+    scope :top_rated_courses, -> { order(average_rating: :desc, created_at: :desc).limit(3) }
+    scope :popular_courses , -> { order(enrollements: :desc, created_at: :desc).limit(3) }
+
     LANGUAGES = [:"English", :"Arabic", :"chinese", :"spanish"]
     def self.languages 
         LANGUAGES.map { |language| [language, language]}
