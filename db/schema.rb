@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_234603) do
+ActiveRecord::Schema.define(version: 2020_07_27_123331) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -127,6 +127,13 @@ ActiveRecord::Schema.define(version: 2020_07_25_234603) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "user_lessons", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "lesson_id", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
+
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'inet' for column 'current_sign_in_ip'
 
@@ -143,4 +150,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_234603) do
   add_foreign_key "enrollements", "courses"
   add_foreign_key "enrollements", "users"
   add_foreign_key "lessons", "courses"
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
 end

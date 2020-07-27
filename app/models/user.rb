@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :courses
   has_many :enrollements
+  has_many :user_lessons
 
   def username
     self.email.split(/@/)[0]
@@ -41,6 +42,12 @@ class User < ApplicationRecord
 
   def buy_course(course)
     self.enrollements.create(course: course, price: course.price)
+  end
+
+  def view_lesson(lesson)
+    unless self.user_lessons.where(lesson: lesson).any?
+      self.user_lessons.create(lesson: lesson)
+    end
   end
 
   private
