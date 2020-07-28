@@ -14,3 +14,9 @@
   Course poularity
 -# = bar_chart  @enrollement.joins(:course).group(:'courses.title').count
 = bar_chart charts_course_popularity_path
+
+%p
+%h3 
+  Money makers
+-# = bar_chart  @enrollement.joins(:course).group(:'courses.title').count
+= bar_chart charts_money_makers_path
