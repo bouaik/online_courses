@@ -18,6 +18,11 @@ class Course < ApplicationRecord
     scope :top_rated_courses, -> { order(average_rating: :desc, created_at: :desc).limit(3) }
     scope :popular_courses , -> { order(enrollements: :desc, created_at: :desc).limit(3) }
 
+    scope :published, -> { where(published: true) }
+    scope :approved, -> { where(approved: true) }
+    scope :unpublished, -> { where(published: false) }
+    scope :unpublished, -> { where(published: false) }
+
     LANGUAGES = [:"English", :"Arabic", :"chinese", :"spanish"]
     def self.languages 
         LANGUAGES.map { |language| [language, language]}

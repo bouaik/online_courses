@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
       
     # end
     @ransack_path = courses_path
-    @ransack_courses = Course.ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course.published.ransack(params[:courses_search], search_key: :courses_search)
     # @courses = @ransack_courses.result.includes(:user)
 
 
@@ -114,6 +114,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:title, :description, :short_description, :level, :price, :language)
+      params.require(:course).permit(:title, :description, :short_description, :level, :price, :language, :published)
     end
 end
