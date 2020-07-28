@@ -9,9 +9,9 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :email, use: :slugged
 
-  has_many :courses
-  has_many :enrollements
-  has_many :user_lessons
+  has_many :courses, dependent: :nullify
+  has_many :enrollements, dependent: :nullify
+  has_many :user_lessons, dependent: :nullify
 
   def username
     self.email.split(/@/)[0]
