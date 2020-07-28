@@ -14,6 +14,10 @@
 = link_to @lesson.course.title, course_path(@lesson.course)
 \/
 = link_to @lesson.title, course_lesson_path(@course, @lesson)
+%p 
+
+-# = @lesson.user_lessons.where(user: current_user).first.impressions / impressions
+
 
 .row.mt-2
   .col-lg-8

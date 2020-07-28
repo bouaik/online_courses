@@ -1,22 +1,22 @@
-%h3 
+%h3.text-center.py-2
   Users created per day
 -# = line_chart @users.group_by_day(:created_at).count
 = line_chart charts_users_per_day_path
 %p
 
-%h3 
+%h3.text-center.py-2 
   Enrollements created per day
 -# = column_chart  @enrollement.group_by_day(:created_at).count
 = column_chart  charts_enrollements_per_day_path
 
 %p
-%h3 
+%h3.text-center.py-2 
   Course poularity
 -# = bar_chart  @enrollement.joins(:course).group(:'courses.title').count
 = bar_chart charts_course_popularity_path
 
 %p
-%h3 
+%h3.text-center.py-2  
   Money makers
 -# = bar_chart  @enrollement.joins(:course).group(:'courses.title').count
 = bar_chart charts_money_makers_path
