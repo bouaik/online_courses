@@ -14,7 +14,12 @@
       = activity.id 
       = activity.trackable_type
       = activity.trackable_id
-      - if activity.trackable
+      - if activity.trackable_type == "Lesson"
+        - if Lesson.where(id: activity.trackable_id).present?
+          = link_to activity.trackable, course_lesson_path(activity.trackable.course, activity.trackable)
+        - else 
+          Lesson was deleted
+      - else
         = link_to activity.trackable, activity.trackable
       = activity.key
       = activity.parameters
