@@ -30,5 +30,8 @@
     - if policy(course).edit?
       .card-footer
         -# = link_to 'Show', course, class: "btn btn-sm btn-primary"
+        - if policy(course).owner?
+          = link_to "Add lesson", new_course_lesson_path(course, @lesson), class: "btn btn-sm btn-primary"
         = link_to 'Edit', edit_course_path(course), class: "btn btn-sm btn-warning" # if policy(course).edit?
         = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" # if policy(course).destroy?
+        

@@ -7,7 +7,7 @@ module CoursesHelper
             elsif course.enrollements.where(user: current_user).any?
                 link_to course_path(course) do
                     "<i class='text-info fa fa-spinner'></i>".html_safe + " " +
-                    number_to_percentage(course.pregress(current_user), precision: 0)
+                    number_to_percentage(course.progress(current_user), precision: 0)
                 end
             elsif course.price > 0
                 link_to number_to_currency(course.price), new_course_enrollement_path(course), class: "btn btn-success"

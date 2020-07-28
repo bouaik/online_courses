@@ -39,7 +39,7 @@ class Course < ApplicationRecord
         self.enrollements.where(user_id: [user.id], course_id: [self.id]).empty?
     end
 
-    def pregress(user)
+    def progress(user)
         unless self.lessons_count.zero?
             user_lessons.where(user: user).count / self.lessons_count.to_f*100
         end

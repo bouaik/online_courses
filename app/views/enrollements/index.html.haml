@@ -30,7 +30,7 @@
       %tr
         %th ID
         %th
-          = sort_link(@q, :user_email)
+          = sort_link(@q, :user_email, "User")
           -# .fa.fa-user 
           -# User
         %th 
@@ -51,6 +51,7 @@
         %th 
           .text-warning.fa.fa-comment
           Review
+        %th Progress
         %th
         %th
         %th
@@ -68,9 +69,14 @@
               = enrollement.updated_at.strftime("%d/%b/%Y - %H:%M")
           %td= enrollement.rating
           %td= enrollement.review
+          %td= number_to_percentage(enrollement.course.progress(enrollement.user), precision: 0)
           %td= link_to 'See review', enrollement
-          %td= link_to 'Add Review', edit_enrollement_path(enrollement), class: "btn btn-sm btn-success"
-          %td= link_to 'Delete enrollement', enrollement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
+          %td
+            - if policy(enrollement).edit?
+              = link_to 'Add Review', edit_enrollement_path(enrollement), class: "btn btn-sm btn-success"
+          %td
+            - if policy(enrollement).destroy?
+              = link_to 'Delete enrollement', enrollement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"
 != pagy_bootstrap_nav(@pagy)
 %br
 

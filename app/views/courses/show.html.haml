@@ -8,12 +8,38 @@
 = link_to @course.title, course_path(@course)
 %p
 .row 
-  .col-lg-6
-    = render "course", course: @course
-  .col-lg-6
-    - if policy(@course).owner?
-      = link_to "Add lesson", new_course_lesson_path(@course, @lesson), class: "btn btn-sm btn-primary btn-block"
+  .col-lg-8.order-1.order-lg-1
+    .jumbotron
+      %h3
+        .fa.fa-graduation-cap
+        = @course.title
+      .mb-3
+      .row
+      .fa.fa-clock
+      = @course.updated_at.strftime("%b/%Y")
+      .row
+      = @course.description
+    %h4
+      .fa.fa-tasks
+      = pluralize(@course.lessons_count, "Lesson")
+      .float-right
+        .fa.fa-spinner
+        = number_to_percentage(@course.progress(current_user), precision: 0)
     %p
-    - @lessons.each do |lesson|
-      = render "lessons/lesson", lesson: lesson
+    %ul.list-group
+      - @lessons.each do |lesson|
+        = render "lessons/lesson_preview", lesson: lesson
+    
+    %p
 
+    %h4
+      .fa.fa-comment
+      = pluralize(@enrollements_with_reviews.count, "Review")
+    - @enrollements_with_reviews.each do |enrollement|
+      = render "enrollements/enrollement", enrollement: enrollement
+      %p
+
+  .col-lg-4.order-0.order-lg-1.mb-3
+    .sticky-top
+      = render "course", course: @course
+    
