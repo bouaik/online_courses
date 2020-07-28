@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :courses do
     get "purchased", "pending_review", "created", on: :collection
+    member do 
+      patch :approve
+      patch :unapprove
+    end
     resources :lessons
     resources :enrollements, only: [:new, :create]
   end

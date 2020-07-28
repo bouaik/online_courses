@@ -21,7 +21,7 @@ class Course < ApplicationRecord
     scope :published, -> { where(published: true) }
     scope :approved, -> { where(approved: true) }
     scope :unpublished, -> { where(published: false) }
-    scope :unpublished, -> { where(published: false) }
+    scope :unapproved, -> { where(approved: false) }
 
     LANGUAGES = [:"English", :"Arabic", :"chinese", :"spanish"]
     def self.languages 

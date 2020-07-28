@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :approve, :unapprove]
 
   # GET /courses
   # GET /courses.json
@@ -13,12 +13,11 @@ class CoursesController < ApplicationController
       
     # end
     @ransack_path = courses_path
-    @ransack_courses = Course.published.ransack(params[:courses_search], search_key: :courses_search)
+    @ransack_courses = Course.published.approved.ransack(params[:courses_search], search_key: :courses_search)
     # @courses = @ransack_courses.result.includes(:user)
 
 
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user), items: 9)
-
   end
 
   def purchased
@@ -41,6 +40,16 @@ class CoursesController < ApplicationController
 
     @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
+  end
+
+  def approve
+    @course.update_attribute(:approved, true)
+    redirect_to @course, notice: "Course APPROVED and visible"
+  end
+
+  def unapprove
+    @course.update_attribute(:approved, false)
+    redirect_to @course, alert: "Course UNAPPROVED and hidden"
   end
   # GET /courses/1
   # GET /courses/1.json
