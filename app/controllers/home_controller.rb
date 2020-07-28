@@ -12,10 +12,20 @@ class HomeController < ApplicationController
   end
 
   def activity
-    @activities = PublicActivity::Activity.all
+    if current_user.has_role?(:admin)
+      @activities = PublicActivity::Activity.all
+    else
+      redirect_to root_path, alert: 'Go AWAAAY !!!.'
+    end
   end
 
-  def statistics
-    
+  def analytics
+    if current_user.has_role?(:admin)
+      @users = User.all
+      @enrollement = Enrollement.all
+      @courses = Course.all
+    else
+      redirect_to root_path, alert: 'Go AWAAAY !!!.'
+    end
   end
 end
