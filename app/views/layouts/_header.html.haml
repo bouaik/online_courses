@@ -97,6 +97,11 @@
               = link_to analytics_path, class: 'dropdown-item' do 
                 .fa.fa-chart-bar 
                 %b analytics
+              = link_to unapproved_courses_path, class: 'dropdown-item' do 
+                .fa.fa-chart-bar 
+                %b Unapproved courses
+                .badge.badge-danger  
+                  = Course.unapproved.count
       
 
       -# .form-inline.my-2.my-lg-0 

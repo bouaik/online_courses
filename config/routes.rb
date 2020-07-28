@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resources :courses do
-    get "purchased", "pending_review", "created", on: :collection
+    get :purchased, :pending_review, :created, :unapproved, on: :collection
     member do 
       patch :approve
       patch :unapprove

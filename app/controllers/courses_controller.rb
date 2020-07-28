@@ -42,12 +42,22 @@ class CoursesController < ApplicationController
     render 'index'
   end
 
+  def unapproved
+    @ransack_path = unapproved_courses_path 
+    @ransack_courses = Course.unapproved.ransack(params[:courses_search], search_key: :courses_search)
+
+    @pagy, @courses = pagy(@ransack_courses.result.includes(:user))
+    render 'index'
+  end
+
   def approve
+    authorize @course, :approve?
     @course.update_attribute(:approved, true)
     redirect_to @course, notice: "Course APPROVED and visible"
   end
 
   def unapprove
+    authorize @course, :approve?
     @course.update_attribute(:approved, false)
     redirect_to @course, alert: "Course UNAPPROVED and hidden"
   end
