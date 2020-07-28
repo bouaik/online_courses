@@ -28,7 +28,9 @@
     %p
     %ul.list-group
       - @lessons.each do |lesson|
-        = render "lessons/lesson_preview", lesson: lesson
+        %li.list-group-item
+          = render "lessons/lesson_preview", lesson: lesson
+        %p
     
     %p
 

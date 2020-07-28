@@ -1,6 +1,5 @@
-%li.list-group-item
-  - if lesson.viewd(current_user) == true
-    .text-success.far.fa-check-square
-  - else
-    .text-danger.far.fa-check-square
-  = link_to lesson.title, course_lesson_path(@course, lesson)
+- if lesson.viewd(current_user) == true
+  .text-success.far.fa-check-square
+- else
+  .text-danger.far.fa-check-square
+= link_to lesson.title, course_lesson_path(@course, lesson)
