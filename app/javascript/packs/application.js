@@ -18,3 +18,6 @@ import "bootstrap"
 // const imagePath = (name) => images(name, true)
 require("trix")
 require("@rails/actiontext")
+
+require("chartkick")
+require("chart.js")
