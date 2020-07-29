@@ -16,7 +16,7 @@ module CoursesHelper
             end
         else
             #logic to show price
-            link_to "check price", course_path(course), class: "btn btn-md btn-success"
+            link_to "check price", new_course_enrollement_path(course), class: "btn btn-md btn-success"
         end
     end
 
