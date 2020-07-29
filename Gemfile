@@ -49,3 +49,4 @@ gem 'exception_notification'
 gem 'pagy'
 gem "chartkick"
 gem 'groupdate'
+gem 'rails-erd', group: :development
