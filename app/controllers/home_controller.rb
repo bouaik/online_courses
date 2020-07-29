@@ -13,7 +13,7 @@ class HomeController < ApplicationController
 
   def activity
     if current_user.has_role?(:admin)
-      @activities = PublicActivity::Activity.all.order(created_at: :desc)
+      @pagy, @activities = pagy(PublicActivity::Activity.all.order(created_at: :desc), items: 10)
     else
       redirect_to root_path, alert: 'Go AWAAAY !!!.'
     end
