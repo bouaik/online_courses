@@ -2,4 +2,7 @@
   .text-success.far.fa-check-square
 - else
   .text-danger.far.fa-check-square
-= link_to lesson.title, course_lesson_path(@course, lesson)
+= link_to course_lesson_path(@course, lesson) do 
+  = lesson.row_order_rank + 1
+  \-
+  = lesson.title
