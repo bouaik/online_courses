@@ -15,8 +15,8 @@ class Course < ApplicationRecord
     friendly_id :title, use: :slugged
 
     scope :latest_courses, -> { limit(3).order(created_at: :desc) }
-    scope :top_rated_courses, -> { order(average_rating: :desc, created_at: :desc).limit(3) }
-    scope :popular_courses , -> { order(enrollements: :desc, created_at: :desc).limit(3) }
+    scope :top_rated_courses, -> { limit(3).order(average_rating: :desc, created_at: :desc) }
+    scope :popular_courses , -> { limit(3).order(enrollements_count: :desc, created_at: :desc) }
 
     scope :published, -> { where(published: true) }
     scope :approved, -> { where(approved: true) }
@@ -30,7 +30,7 @@ class Course < ApplicationRecord
 
     LEVELS = [:"Beginner", :"Intermidiate", :"Advanced"]
     def self.levels 
-        LEVELS.map { |language| [language, language]}
+        LEVELS.map { |level| [level, level]}
     end
 
     include PublicActivity::Model
